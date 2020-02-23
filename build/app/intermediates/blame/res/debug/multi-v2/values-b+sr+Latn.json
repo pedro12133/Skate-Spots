@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/home/pedro/AndroidStudioProjects/skate_maps/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-b+sr+Latn/values-b+sr+Latn.xml",
+            "outputFile": "/home/pedro/Desktop/skate-maps/SkateMaps/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-b+sr+Latn/values-b+sr+Latn.xml",
             "map": [
                 {
                     "source": "/home/pedro/.gradle/caches/transforms-2/files-2.1/a278fa690b9085e341033614b0908a64/jetified-play-services-basement-17.0.0/res/values-b+sr+Latn/values.xml",

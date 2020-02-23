@@ -1,7 +1,10 @@
 # This is a generated file; do not edit or check into version control.
-flutter_plugin_android_lifecycle=/home/pedro/Dev/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_plugin_android_lifecycle-1.0.5/
-geolocator=/home/pedro/Dev/flutter/.pub-cache/hosted/pub.dartlang.org/geolocator-5.2.1/
+flutter_plugin_android_lifecycle=/home/pedro/Dev/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_plugin_android_lifecycle-1.0.6/
+geolocator=/home/pedro/Dev/flutter/.pub-cache/hosted/pub.dartlang.org/geolocator-5.3.0/
 google_api_availability=/home/pedro/Dev/flutter/.pub-cache/hosted/pub.dartlang.org/google_api_availability-2.0.2/
-google_maps_flutter=/home/pedro/Dev/flutter/.pub-cache/hosted/pub.dartlang.org/google_maps_flutter-0.5.23+1/
+google_maps_flutter=/home/pedro/Dev/flutter/.pub-cache/hosted/pub.dartlang.org/google_maps_flutter-0.5.24+1/
 location_permissions=/home/pedro/Dev/flutter/.pub-cache/hosted/pub.dartlang.org/location_permissions-2.0.4+1/
-path_provider=/home/pedro/Dev/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider-1.6.0/
+path_provider=/home/pedro/Dev/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider-1.6.1/
+shared_preferences=/home/pedro/Dev/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences-0.5.6+2/
+shared_preferences_macos=/home/pedro/Dev/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences_macos-0.0.1+6/
+shared_preferences_web=/home/pedro/Dev/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences_web-0.1.2+4/

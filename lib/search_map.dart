@@ -21,7 +21,7 @@ class SearchMap extends StatefulWidget {
 }
 
 class _SearchMap extends State<SearchMap> {
-  static const String _API_KEY = 'AIzaSyDpxqrntzfSpz89uDHpcdFLPQnmYzrC6NY';
+  static const String _API_KEY = '';
   double lat = 34.1314283;
   double lon = -118.06987;
   static double tilt = 75;

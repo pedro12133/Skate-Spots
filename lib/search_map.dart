@@ -99,7 +99,7 @@ class _SearchMap extends State<SearchMap> {
           height: 56.0,
           child: Row(children: <Widget>[
             IconButton(
-              onPressed: showMenu,
+              onPressed: _getSavedSpots,
               icon: Icon(Icons.list),
               color: Colors.white,
             ),
@@ -115,6 +115,12 @@ class _SearchMap extends State<SearchMap> {
     );
   }
 
+  void _getSavedSpots() {
+    databaseRef.collection('markers')
+      .getDocuments().then((QuerySnapshot snapshot) {
+        snapshot.documents.forEach((f) => print('${f.data}'));
+    });
+  }
   void _saveSpot() async {
     print('saving...');
     await databaseRef.collection('markers')

@@ -59,7 +59,7 @@ class _SearchFilter extends State<SearchFilter> {
               );
             },
           ),
-          title: Text('Steez',
+          title: Text('Filters',
             style: GoogleFonts.rockSalt(
               fontSize: 30,
               fontWeight: FontWeight.bold,

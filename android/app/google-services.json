@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "644168802563",
+    "firebase_url": "https://skate-maps-c378d.firebaseio.com",
+    "project_id": "skate-maps-c378d",
+    "storage_bucket": "skate-maps-c378d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:644168802563:android:d29e3b8a48a2dd68b90936",
+        "android_client_info": {
+          "package_name": "com.pedrobeltran.skate_maps"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "644168802563-o1ih5lsj14v44anffkklie9r1ib4oirj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZ22paCd0il_jNV8dBi5yTrcAXSwQlSV0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "644168802563-o1ih5lsj14v44anffkklie9r1ib4oirj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

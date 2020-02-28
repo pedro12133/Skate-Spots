@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'search_map.dart';
 import 'map_menu.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 
 void main() => runApp(SkateMaps());
 
@@ -32,10 +35,10 @@ class _SkateMaps extends State<SkateMaps>{
           leading: Builder(
             builder: (BuildContext context) {
               return IconButton(
-                  icon: Icon(Icons.add_location),
+                  icon: Icon(Icons.person),
                   tooltip: 'Search',
                   onPressed: () {
-                    Scaffold.of(context).openEndDrawer();
+
                   });
             },
           ),
@@ -62,7 +65,7 @@ class _SkateMaps extends State<SkateMaps>{
             Builder(
               builder: (BuildContext context) {
                 return IconButton(
-                    icon: Icon(Icons.menu),
+                    icon: Icon(Icons.filter_list),
                     tooltip: 'Filter Search',
                     onPressed: () {
                       Scaffold.of(context).openEndDrawer();
@@ -77,20 +80,3 @@ class _SkateMaps extends State<SkateMaps>{
     );
   }
 }
-
-//Row(
-//mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-//children: <Widget>[
-//BottomNavigationBarItem(
-//icon: Icon(Icons.home, size: 40, color: Colors.white),
-//),
-//FloatingActionButton(
-//child: Icon(Icons.map, size: 40, color: Colors.white),
-//backgroundColor: Colors.blueGrey,
-//),
-//FloatingActionButton(
-//child: Icon(Icons.person, size: 40, color: Colors.white),
-//backgroundColor: Colors.blueGrey,
-//),
-//],
-//),

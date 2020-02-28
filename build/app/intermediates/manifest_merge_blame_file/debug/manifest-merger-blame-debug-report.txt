@@ -25,22 +25,22 @@
 22-->/home/pedro/Desktop/skate-maps/SkateMaps/android/app/src/main/AndroidManifest.xml:9:5-79
 22-->/home/pedro/Desktop/skate-maps/SkateMaps/android/app/src/main/AndroidManifest.xml:9:22-76
 23    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-23-->[com.google.android.gms:play-services-maps:17.0.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/6b9b7fc1ad481537ed0a66d62976ec46/play-services-maps-17.0.0/AndroidManifest.xml:23:5-79
-23-->[com.google.android.gms:play-services-maps:17.0.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/6b9b7fc1ad481537ed0a66d62976ec46/play-services-maps-17.0.0/AndroidManifest.xml:23:22-76
+23-->[com.google.android.gms:play-services-maps:17.0.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/355332704fbabf3ed5c20e6555a3126a/play-services-maps-17.0.0/AndroidManifest.xml:23:5-79
+23-->[com.google.android.gms:play-services-maps:17.0.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/355332704fbabf3ed5c20e6555a3126a/play-services-maps-17.0.0/AndroidManifest.xml:23:22-76
 24
 25    <uses-feature
-25-->[com.google.android.gms:play-services-maps:17.0.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/6b9b7fc1ad481537ed0a66d62976ec46/play-services-maps-17.0.0/AndroidManifest.xml:26:5-28:35
+25-->[com.google.android.gms:play-services-maps:17.0.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/355332704fbabf3ed5c20e6555a3126a/play-services-maps-17.0.0/AndroidManifest.xml:26:5-28:35
 26        android:glEsVersion="0x00020000"
-26-->[com.google.android.gms:play-services-maps:17.0.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/6b9b7fc1ad481537ed0a66d62976ec46/play-services-maps-17.0.0/AndroidManifest.xml:27:9-41
+26-->[com.google.android.gms:play-services-maps:17.0.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/355332704fbabf3ed5c20e6555a3126a/play-services-maps-17.0.0/AndroidManifest.xml:27:9-41
 27        android:required="true" />
-27-->[com.google.android.gms:play-services-maps:17.0.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/6b9b7fc1ad481537ed0a66d62976ec46/play-services-maps-17.0.0/AndroidManifest.xml:28:9-32
+27-->[com.google.android.gms:play-services-maps:17.0.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/355332704fbabf3ed5c20e6555a3126a/play-services-maps-17.0.0/AndroidManifest.xml:28:9-32
 28
 29    <application
 29-->/home/pedro/Desktop/skate-maps/SkateMaps/android/app/src/main/AndroidManifest.xml:11:5-35:19
 30        android:name="io.flutter.app.FlutterApplication"
 30-->/home/pedro/Desktop/skate-maps/SkateMaps/android/app/src/main/AndroidManifest.xml:12:9-57
 31        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-31-->[androidx.core:core:1.1.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/a528b13ac93e64cafa3d0480e2c93207/core-1.1.0/AndroidManifest.xml:24:18-86
+31-->[androidx.core:core:1.1.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/e74a1afd426538a36f0d6b21d498af68/core-1.1.0/AndroidManifest.xml:24:18-86
 32        android:debuggable="true"
 33        android:icon="@mipmap/ic_launcher"
 33-->/home/pedro/Desktop/skate-maps/SkateMaps/android/app/src/main/AndroidManifest.xml:14:9-43
@@ -90,29 +90,94 @@
 59-->/home/pedro/Desktop/skate-maps/SkateMaps/android/app/src/main/AndroidManifest.xml:33:13-44
 60            android:value="2" />
 60-->/home/pedro/Desktop/skate-maps/SkateMaps/android/app/src/main/AndroidManifest.xml:34:13-30
-61        <!-- Needs to be explicitly declared on P+ -->
-62        <uses-library
-62-->[com.google.android.gms:play-services-maps:17.0.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/6b9b7fc1ad481537ed0a66d62976ec46/play-services-maps-17.0.0/AndroidManifest.xml:33:9-35:40
-63            android:name="org.apache.http.legacy"
-63-->[com.google.android.gms:play-services-maps:17.0.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/6b9b7fc1ad481537ed0a66d62976ec46/play-services-maps-17.0.0/AndroidManifest.xml:34:13-50
-64            android:required="false" />
-64-->[com.google.android.gms:play-services-maps:17.0.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/6b9b7fc1ad481537ed0a66d62976ec46/play-services-maps-17.0.0/AndroidManifest.xml:35:13-37
-65
-66        <activity
-66-->[com.google.android.gms:play-services-base:17.0.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/5ac9ad6f13ea0190a3570ea7a43d9f59/play-services-base-17.0.0/AndroidManifest.xml:23:9-26:75
-67            android:name="com.google.android.gms.common.api.GoogleApiActivity"
-67-->[com.google.android.gms:play-services-base:17.0.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/5ac9ad6f13ea0190a3570ea7a43d9f59/play-services-base-17.0.0/AndroidManifest.xml:24:13-79
-68            android:exported="false"
-68-->[com.google.android.gms:play-services-base:17.0.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/5ac9ad6f13ea0190a3570ea7a43d9f59/play-services-base-17.0.0/AndroidManifest.xml:25:13-37
-69            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-69-->[com.google.android.gms:play-services-base:17.0.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/5ac9ad6f13ea0190a3570ea7a43d9f59/play-services-base-17.0.0/AndroidManifest.xml:26:13-72
-70
-71        <meta-data
-71-->[com.google.android.gms:play-services-basement:17.0.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/a278fa690b9085e341033614b0908a64/jetified-play-services-basement-17.0.0/AndroidManifest.xml:23:9-25:69
-72            android:name="com.google.android.gms.version"
-72-->[com.google.android.gms:play-services-basement:17.0.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/a278fa690b9085e341033614b0908a64/jetified-play-services-basement-17.0.0/AndroidManifest.xml:24:13-58
-73            android:value="@integer/google_play_services_version" />
-73-->[com.google.android.gms:play-services-basement:17.0.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/a278fa690b9085e341033614b0908a64/jetified-play-services-basement-17.0.0/AndroidManifest.xml:25:13-66
-74    </application>
-75
-76</manifest>
+61
+62        <service
+62-->[:firebase_auth] /home/pedro/Desktop/skate-maps/SkateMaps/build/firebase_auth/intermediates/library_manifest/debug/AndroidManifest.xml:8:9-12:19
+63            android:name="com.google.firebase.components.ComponentDiscoveryService"
+63-->[:firebase_auth] /home/pedro/Desktop/skate-maps/SkateMaps/build/firebase_auth/intermediates/library_manifest/debug/AndroidManifest.xml:8:18-89
+64            android:directBootAware="true"
+64-->[com.google.firebase:firebase-common:19.3.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/d6d163a9b0215544b0bde58e878f4ced/jetified-firebase-common-19.3.0/AndroidManifest.xml:34:13-43
+65            android:exported="false" >
+65-->[com.google.firebase:firebase-auth:19.2.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/c8b72275e916ed32c52cbb029194f794/firebase-auth-19.2.0/AndroidManifest.xml:35:13-37
+66            <meta-data
+66-->[:firebase_auth] /home/pedro/Desktop/skate-maps/SkateMaps/build/firebase_auth/intermediates/library_manifest/debug/AndroidManifest.xml:9:13-11:85
+67                android:name="com.google.firebase.components:io.flutter.plugins.firebaseauth.FlutterFirebaseAppRegistrar"
+67-->[:firebase_auth] /home/pedro/Desktop/skate-maps/SkateMaps/build/firebase_auth/intermediates/library_manifest/debug/AndroidManifest.xml:10:17-122
+68                android:value="com.google.firebase.components.ComponentRegistrar" />
+68-->[:firebase_auth] /home/pedro/Desktop/skate-maps/SkateMaps/build/firebase_auth/intermediates/library_manifest/debug/AndroidManifest.xml:11:17-82
+69            <meta-data
+69-->[:cloud_firestore] /home/pedro/Desktop/skate-maps/SkateMaps/build/cloud_firestore/intermediates/library_manifest/debug/AndroidManifest.xml:9:13-11:85
+70                android:name="com.google.firebase.components:io.flutter.plugins.firebase.cloudfirestore.FlutterFirebaseAppRegistrar"
+70-->[:cloud_firestore] /home/pedro/Desktop/skate-maps/SkateMaps/build/cloud_firestore/intermediates/library_manifest/debug/AndroidManifest.xml:10:17-133
+71                android:value="com.google.firebase.components.ComponentRegistrar" />
+71-->[:cloud_firestore] /home/pedro/Desktop/skate-maps/SkateMaps/build/cloud_firestore/intermediates/library_manifest/debug/AndroidManifest.xml:11:17-82
+72            <meta-data
+72-->[:firebase_core] /home/pedro/Desktop/skate-maps/SkateMaps/build/firebase_core/intermediates/library_manifest/debug/AndroidManifest.xml:9:13-11:85
+73                android:name="com.google.firebase.components:io.flutter.plugins.firebase.core.FlutterFirebaseAppRegistrar"
+73-->[:firebase_core] /home/pedro/Desktop/skate-maps/SkateMaps/build/firebase_core/intermediates/library_manifest/debug/AndroidManifest.xml:10:17-123
+74                android:value="com.google.firebase.components.ComponentRegistrar" />
+74-->[:firebase_core] /home/pedro/Desktop/skate-maps/SkateMaps/build/firebase_core/intermediates/library_manifest/debug/AndroidManifest.xml:11:17-82
+75            <meta-data
+75-->[com.google.firebase:firebase-auth:19.2.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/c8b72275e916ed32c52cbb029194f794/firebase-auth-19.2.0/AndroidManifest.xml:36:13-38:85
+76                android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar"
+76-->[com.google.firebase:firebase-auth:19.2.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/c8b72275e916ed32c52cbb029194f794/firebase-auth-19.2.0/AndroidManifest.xml:37:17-109
+77                android:value="com.google.firebase.components.ComponentRegistrar" />
+77-->[com.google.firebase:firebase-auth:19.2.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/c8b72275e916ed32c52cbb029194f794/firebase-auth-19.2.0/AndroidManifest.xml:38:17-82
+78            <meta-data
+78-->[com.google.firebase:firebase-firestore:21.3.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/9b0c0efcce60e36d2f6edb0571e11729/jetified-firebase-firestore-21.3.0/AndroidManifest.xml:20:13-22:85
+79                android:name="com.google.firebase.components:com.google.firebase.firestore.FirestoreRegistrar"
+79-->[com.google.firebase:firebase-firestore:21.3.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/9b0c0efcce60e36d2f6edb0571e11729/jetified-firebase-firestore-21.3.0/AndroidManifest.xml:21:17-111
+80                android:value="com.google.firebase.components.ComponentRegistrar" />
+80-->[com.google.firebase:firebase-firestore:21.3.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/9b0c0efcce60e36d2f6edb0571e11729/jetified-firebase-firestore-21.3.0/AndroidManifest.xml:22:17-82
+81        </service> <!-- Needs to be explicitly declared on P+ -->
+82        <uses-library
+82-->[com.google.android.gms:play-services-maps:17.0.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/355332704fbabf3ed5c20e6555a3126a/play-services-maps-17.0.0/AndroidManifest.xml:33:9-35:40
+83            android:name="org.apache.http.legacy"
+83-->[com.google.android.gms:play-services-maps:17.0.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/355332704fbabf3ed5c20e6555a3126a/play-services-maps-17.0.0/AndroidManifest.xml:34:13-50
+84            android:required="false" />
+84-->[com.google.android.gms:play-services-maps:17.0.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/355332704fbabf3ed5c20e6555a3126a/play-services-maps-17.0.0/AndroidManifest.xml:35:13-37
+85
+86        <activity
+86-->[com.google.firebase:firebase-auth:19.2.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/c8b72275e916ed32c52cbb029194f794/firebase-auth-19.2.0/AndroidManifest.xml:24:9-31:50
+87            android:name="com.google.firebase.auth.internal.FederatedSignInActivity"
+87-->[com.google.firebase:firebase-auth:19.2.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/c8b72275e916ed32c52cbb029194f794/firebase-auth-19.2.0/AndroidManifest.xml:25:13-85
+88            android:excludeFromRecents="true"
+88-->[com.google.firebase:firebase-auth:19.2.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/c8b72275e916ed32c52cbb029194f794/firebase-auth-19.2.0/AndroidManifest.xml:26:13-46
+89            android:exported="true"
+89-->[com.google.firebase:firebase-auth:19.2.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/c8b72275e916ed32c52cbb029194f794/firebase-auth-19.2.0/AndroidManifest.xml:27:13-36
+90            android:launchMode="singleTask"
+90-->[com.google.firebase:firebase-auth:19.2.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/c8b72275e916ed32c52cbb029194f794/firebase-auth-19.2.0/AndroidManifest.xml:28:13-44
+91            android:permission="com.google.firebase.auth.api.gms.permission.LAUNCH_FEDERATED_SIGN_IN"
+91-->[com.google.firebase:firebase-auth:19.2.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/c8b72275e916ed32c52cbb029194f794/firebase-auth-19.2.0/AndroidManifest.xml:29:13-102
+92            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+92-->[com.google.firebase:firebase-auth:19.2.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/c8b72275e916ed32c52cbb029194f794/firebase-auth-19.2.0/AndroidManifest.xml:30:13-72
+93
+94        <provider
+94-->[com.google.firebase:firebase-common:19.3.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/d6d163a9b0215544b0bde58e878f4ced/jetified-firebase-common-19.3.0/AndroidManifest.xml:26:9-30:39
+95            android:name="com.google.firebase.provider.FirebaseInitProvider"
+95-->[com.google.firebase:firebase-common:19.3.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/d6d163a9b0215544b0bde58e878f4ced/jetified-firebase-common-19.3.0/AndroidManifest.xml:27:13-77
+96            android:authorities="com.pedrobeltran.skate_maps.firebaseinitprovider"
+96-->[com.google.firebase:firebase-common:19.3.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/d6d163a9b0215544b0bde58e878f4ced/jetified-firebase-common-19.3.0/AndroidManifest.xml:28:13-72
+97            android:exported="false"
+97-->[com.google.firebase:firebase-common:19.3.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/d6d163a9b0215544b0bde58e878f4ced/jetified-firebase-common-19.3.0/AndroidManifest.xml:29:13-37
+98            android:initOrder="100" />
+98-->[com.google.firebase:firebase-common:19.3.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/d6d163a9b0215544b0bde58e878f4ced/jetified-firebase-common-19.3.0/AndroidManifest.xml:30:13-36
+99
+100        <activity
+100-->[com.google.android.gms:play-services-base:17.1.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/57b0442f3da110455da4760211a188a0/play-services-base-17.1.0/AndroidManifest.xml:23:9-26:75
+101            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+101-->[com.google.android.gms:play-services-base:17.1.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/57b0442f3da110455da4760211a188a0/play-services-base-17.1.0/AndroidManifest.xml:24:13-79
+102            android:exported="false"
+102-->[com.google.android.gms:play-services-base:17.1.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/57b0442f3da110455da4760211a188a0/play-services-base-17.1.0/AndroidManifest.xml:25:13-37
+103            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+103-->[com.google.android.gms:play-services-base:17.1.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/57b0442f3da110455da4760211a188a0/play-services-base-17.1.0/AndroidManifest.xml:26:13-72
+104
+105        <meta-data
+105-->[com.google.android.gms:play-services-basement:17.0.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/cc7c6f7d1187fb5df14b96fbb1ef0d47/jetified-play-services-basement-17.0.0/AndroidManifest.xml:23:9-25:69
+106            android:name="com.google.android.gms.version"
+106-->[com.google.android.gms:play-services-basement:17.0.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/cc7c6f7d1187fb5df14b96fbb1ef0d47/jetified-play-services-basement-17.0.0/AndroidManifest.xml:24:13-58
+107            android:value="@integer/google_play_services_version" />
+107-->[com.google.android.gms:play-services-basement:17.0.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/cc7c6f7d1187fb5df14b96fbb1ef0d47/jetified-play-services-basement-17.0.0/AndroidManifest.xml:25:13-66
+108    </application>
+109
+110</manifest>

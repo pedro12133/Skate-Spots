@@ -9,22 +9,25 @@ MERGED from [:firebase_auth] /home/pedro/Desktop/skate-maps/SkateMaps/build/fire
 MERGED from [:firebase_auth_web] /home/pedro/Desktop/skate-maps/SkateMaps/build/firebase_auth_web/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
 MERGED from [:cloud_firestore] /home/pedro/Desktop/skate-maps/SkateMaps/build/cloud_firestore/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-15:12
 MERGED from [:cloud_firestore_web] /home/pedro/Desktop/skate-maps/SkateMaps/build/cloud_firestore_web/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
+MERGED from [:firebase_database] /home/pedro/Desktop/skate-maps/SkateMaps/build/firebase_database/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-15:12
 MERGED from [:firebase_core] /home/pedro/Desktop/skate-maps/SkateMaps/build/firebase_core/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-15:12
 MERGED from [:firebase_core_web] /home/pedro/Desktop/skate-maps/SkateMaps/build/firebase_core_web/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
 MERGED from [:geolocator] /home/pedro/Desktop/skate-maps/SkateMaps/build/geolocator/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-9:12
 MERGED from [:google_api_availability] /home/pedro/Desktop/skate-maps/SkateMaps/build/google_api_availability/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
+MERGED from [:path_provider] /home/pedro/Desktop/skate-maps/SkateMaps/build/path_provider/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
+MERGED from [:path_provider_macos] /home/pedro/Desktop/skate-maps/SkateMaps/build/path_provider_macos/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
 MERGED from [:google_maps_flutter] /home/pedro/Desktop/skate-maps/SkateMaps/build/google_maps_flutter/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
 MERGED from [:flutter_plugin_android_lifecycle] /home/pedro/Desktop/skate-maps/SkateMaps/build/flutter_plugin_android_lifecycle/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
 MERGED from [:shared_preferences] /home/pedro/Desktop/skate-maps/SkateMaps/build/shared_preferences/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
 MERGED from [:shared_preferences_web] /home/pedro/Desktop/skate-maps/SkateMaps/build/shared_preferences_web/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
 MERGED from [:shared_preferences_macos] /home/pedro/Desktop/skate-maps/SkateMaps/build/shared_preferences_macos/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
-MERGED from [:path_provider] /home/pedro/Desktop/skate-maps/SkateMaps/build/path_provider/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
 MERGED from [:location_permissions] /home/pedro/Desktop/skate-maps/SkateMaps/build/location_permissions/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.multidex:multidex:2.0.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/1360409052ca32e39ee752a76cd4b870/multidex-2.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.android.gms:play-services-maps:17.0.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/355332704fbabf3ed5c20e6555a3126a/play-services-maps-17.0.0/AndroidManifest.xml:17:1-38:12
 MERGED from [com.google.firebase:firebase-auth:19.2.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/c8b72275e916ed32c52cbb029194f794/firebase-auth-19.2.0/AndroidManifest.xml:17:1-42:12
 MERGED from [com.google.android.gms:play-services-location:17.0.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/3ed459c46ff621a35703c524d1a8f15c/play-services-location-17.0.0/AndroidManifest.xml:2:1-9:12
 MERGED from [com.google.firebase:firebase-firestore:21.3.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/9b0c0efcce60e36d2f6edb0571e11729/jetified-firebase-firestore-21.3.0/AndroidManifest.xml:2:1-26:12
+MERGED from [com.google.firebase:firebase-database:17.0.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/104413d1f1959dabd31ff9e38403d529/jetified-firebase-database-17.0.0/AndroidManifest.xml:15:1-36:12
 MERGED from [com.google.firebase:firebase-auth-interop:19.0.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/91c4598c9f7e8c5d6eff8ffb2fccfa22/firebase-auth-interop-19.0.0/AndroidManifest.xml:2:1-10:12
 MERGED from [com.google.firebase:firebase-common:19.3.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/d6d163a9b0215544b0bde58e878f4ced/jetified-firebase-common-19.3.0/AndroidManifest.xml:15:1-39:12
 MERGED from [com.google.android.gms:play-services-places-placereport:17.0.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/26f7b7e36b43aa3a9d742c3e736ca533/play-services-places-placereport-17.0.0/AndroidManifest.xml:17:1-24:12
@@ -87,6 +90,8 @@ MERGED from [:firebase_auth] /home/pedro/Desktop/skate-maps/SkateMaps/build/fire
 MERGED from [:firebase_auth] /home/pedro/Desktop/skate-maps/SkateMaps/build/firebase_auth/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-13:19
 MERGED from [:cloud_firestore] /home/pedro/Desktop/skate-maps/SkateMaps/build/cloud_firestore/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-13:19
 MERGED from [:cloud_firestore] /home/pedro/Desktop/skate-maps/SkateMaps/build/cloud_firestore/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-13:19
+MERGED from [:firebase_database] /home/pedro/Desktop/skate-maps/SkateMaps/build/firebase_database/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-13:19
+MERGED from [:firebase_database] /home/pedro/Desktop/skate-maps/SkateMaps/build/firebase_database/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-13:19
 MERGED from [:firebase_core] /home/pedro/Desktop/skate-maps/SkateMaps/build/firebase_core/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-13:19
 MERGED from [:firebase_core] /home/pedro/Desktop/skate-maps/SkateMaps/build/firebase_core/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-13:19
 MERGED from [com.google.android.gms:play-services-maps:17.0.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/355332704fbabf3ed5c20e6555a3126a/play-services-maps-17.0.0/AndroidManifest.xml:30:5-36:19
@@ -97,6 +102,8 @@ MERGED from [com.google.android.gms:play-services-location:17.0.0] /home/pedro/.
 MERGED from [com.google.android.gms:play-services-location:17.0.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/3ed459c46ff621a35703c524d1a8f15c/play-services-location-17.0.0/AndroidManifest.xml:7:5-20
 MERGED from [com.google.firebase:firebase-firestore:21.3.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/9b0c0efcce60e36d2f6edb0571e11729/jetified-firebase-firestore-21.3.0/AndroidManifest.xml:16:5-24:19
 MERGED from [com.google.firebase:firebase-firestore:21.3.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/9b0c0efcce60e36d2f6edb0571e11729/jetified-firebase-firestore-21.3.0/AndroidManifest.xml:16:5-24:19
+MERGED from [com.google.firebase:firebase-database:17.0.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/104413d1f1959dabd31ff9e38403d529/jetified-firebase-database-17.0.0/AndroidManifest.xml:28:5-34:19
+MERGED from [com.google.firebase:firebase-database:17.0.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/104413d1f1959dabd31ff9e38403d529/jetified-firebase-database-17.0.0/AndroidManifest.xml:28:5-34:19
 MERGED from [com.google.firebase:firebase-auth-interop:19.0.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/91c4598c9f7e8c5d6eff8ffb2fccfa22/firebase-auth-interop-19.0.0/AndroidManifest.xml:7:5-8:19
 MERGED from [com.google.firebase:firebase-auth-interop:19.0.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/91c4598c9f7e8c5d6eff8ffb2fccfa22/firebase-auth-interop-19.0.0/AndroidManifest.xml:7:5-8:19
 MERGED from [com.google.firebase:firebase-common:19.3.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/d6d163a9b0215544b0bde58e878f4ced/jetified-firebase-common-19.3.0/AndroidManifest.xml:25:5-37:19
@@ -169,6 +176,8 @@ MERGED from [:cloud_firestore] /home/pedro/Desktop/skate-maps/SkateMaps/build/cl
 MERGED from [:cloud_firestore] /home/pedro/Desktop/skate-maps/SkateMaps/build/cloud_firestore/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:cloud_firestore_web] /home/pedro/Desktop/skate-maps/SkateMaps/build/cloud_firestore_web/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:cloud_firestore_web] /home/pedro/Desktop/skate-maps/SkateMaps/build/cloud_firestore_web/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:firebase_database] /home/pedro/Desktop/skate-maps/SkateMaps/build/firebase_database/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:firebase_database] /home/pedro/Desktop/skate-maps/SkateMaps/build/firebase_database/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:firebase_core] /home/pedro/Desktop/skate-maps/SkateMaps/build/firebase_core/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:firebase_core] /home/pedro/Desktop/skate-maps/SkateMaps/build/firebase_core/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:firebase_core_web] /home/pedro/Desktop/skate-maps/SkateMaps/build/firebase_core_web/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
@@ -177,6 +186,10 @@ MERGED from [:geolocator] /home/pedro/Desktop/skate-maps/SkateMaps/build/geoloca
 MERGED from [:geolocator] /home/pedro/Desktop/skate-maps/SkateMaps/build/geolocator/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:google_api_availability] /home/pedro/Desktop/skate-maps/SkateMaps/build/google_api_availability/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:google_api_availability] /home/pedro/Desktop/skate-maps/SkateMaps/build/google_api_availability/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:path_provider] /home/pedro/Desktop/skate-maps/SkateMaps/build/path_provider/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:path_provider] /home/pedro/Desktop/skate-maps/SkateMaps/build/path_provider/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:path_provider_macos] /home/pedro/Desktop/skate-maps/SkateMaps/build/path_provider_macos/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:path_provider_macos] /home/pedro/Desktop/skate-maps/SkateMaps/build/path_provider_macos/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:google_maps_flutter] /home/pedro/Desktop/skate-maps/SkateMaps/build/google_maps_flutter/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:google_maps_flutter] /home/pedro/Desktop/skate-maps/SkateMaps/build/google_maps_flutter/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:flutter_plugin_android_lifecycle] /home/pedro/Desktop/skate-maps/SkateMaps/build/flutter_plugin_android_lifecycle/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
@@ -187,8 +200,6 @@ MERGED from [:shared_preferences_web] /home/pedro/Desktop/skate-maps/SkateMaps/b
 MERGED from [:shared_preferences_web] /home/pedro/Desktop/skate-maps/SkateMaps/build/shared_preferences_web/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:shared_preferences_macos] /home/pedro/Desktop/skate-maps/SkateMaps/build/shared_preferences_macos/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:shared_preferences_macos] /home/pedro/Desktop/skate-maps/SkateMaps/build/shared_preferences_macos/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
-MERGED from [:path_provider] /home/pedro/Desktop/skate-maps/SkateMaps/build/path_provider/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
-MERGED from [:path_provider] /home/pedro/Desktop/skate-maps/SkateMaps/build/path_provider/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:location_permissions] /home/pedro/Desktop/skate-maps/SkateMaps/build/location_permissions/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:location_permissions] /home/pedro/Desktop/skate-maps/SkateMaps/build/location_permissions/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [androidx.multidex:multidex:2.0.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/1360409052ca32e39ee752a76cd4b870/multidex-2.0.0/AndroidManifest.xml:20:5-43
@@ -201,6 +212,8 @@ MERGED from [com.google.android.gms:play-services-location:17.0.0] /home/pedro/.
 MERGED from [com.google.android.gms:play-services-location:17.0.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/3ed459c46ff621a35703c524d1a8f15c/play-services-location-17.0.0/AndroidManifest.xml:5:5-44
 MERGED from [com.google.firebase:firebase-firestore:21.3.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/9b0c0efcce60e36d2f6edb0571e11729/jetified-firebase-firestore-21.3.0/AndroidManifest.xml:7:5-9:41
 MERGED from [com.google.firebase:firebase-firestore:21.3.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/9b0c0efcce60e36d2f6edb0571e11729/jetified-firebase-firestore-21.3.0/AndroidManifest.xml:7:5-9:41
+MERGED from [com.google.firebase:firebase-database:17.0.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/104413d1f1959dabd31ff9e38403d529/jetified-firebase-database-17.0.0/AndroidManifest.xml:19:5-21:41
+MERGED from [com.google.firebase:firebase-database:17.0.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/104413d1f1959dabd31ff9e38403d529/jetified-firebase-database-17.0.0/AndroidManifest.xml:19:5-21:41
 MERGED from [com.google.firebase:firebase-auth-interop:19.0.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/91c4598c9f7e8c5d6eff8ffb2fccfa22/firebase-auth-interop-19.0.0/AndroidManifest.xml:5:5-44
 MERGED from [com.google.firebase:firebase-auth-interop:19.0.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/91c4598c9f7e8c5d6eff8ffb2fccfa22/firebase-auth-interop-19.0.0/AndroidManifest.xml:5:5-44
 MERGED from [com.google.firebase:firebase-common:19.3.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/d6d163a9b0215544b0bde58e878f4ced/jetified-firebase-common-19.3.0/AndroidManifest.xml:20:5-22:41
@@ -281,18 +294,24 @@ MERGED from [com.google.android.gms:play-services-maps:17.0.0] /home/pedro/.grad
 MERGED from [com.google.android.gms:play-services-maps:17.0.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/355332704fbabf3ed5c20e6555a3126a/play-services-maps-17.0.0/AndroidManifest.xml:24:5-67
 MERGED from [com.google.firebase:firebase-firestore:21.3.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/9b0c0efcce60e36d2f6edb0571e11729/jetified-firebase-firestore-21.3.0/AndroidManifest.xml:14:5-67
 MERGED from [com.google.firebase:firebase-firestore:21.3.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/9b0c0efcce60e36d2f6edb0571e11729/jetified-firebase-firestore-21.3.0/AndroidManifest.xml:14:5-67
+MERGED from [com.google.firebase:firebase-database:17.0.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/104413d1f1959dabd31ff9e38403d529/jetified-firebase-database-17.0.0/AndroidManifest.xml:26:5-67
+MERGED from [com.google.firebase:firebase-database:17.0.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/104413d1f1959dabd31ff9e38403d529/jetified-firebase-database-17.0.0/AndroidManifest.xml:26:5-67
 	android:name
 		ADDED from /home/pedro/Desktop/skate-maps/SkateMaps/android/app/src/debug/AndroidManifest.xml:6:22-64
 service#com.google.firebase.components.ComponentDiscoveryService
 ADDED from [:firebase_auth] /home/pedro/Desktop/skate-maps/SkateMaps/build/firebase_auth/intermediates/library_manifest/debug/AndroidManifest.xml:8:9-12:19
 MERGED from [:cloud_firestore] /home/pedro/Desktop/skate-maps/SkateMaps/build/cloud_firestore/intermediates/library_manifest/debug/AndroidManifest.xml:8:9-12:19
 MERGED from [:cloud_firestore] /home/pedro/Desktop/skate-maps/SkateMaps/build/cloud_firestore/intermediates/library_manifest/debug/AndroidManifest.xml:8:9-12:19
+MERGED from [:firebase_database] /home/pedro/Desktop/skate-maps/SkateMaps/build/firebase_database/intermediates/library_manifest/debug/AndroidManifest.xml:8:9-12:19
+MERGED from [:firebase_database] /home/pedro/Desktop/skate-maps/SkateMaps/build/firebase_database/intermediates/library_manifest/debug/AndroidManifest.xml:8:9-12:19
 MERGED from [:firebase_core] /home/pedro/Desktop/skate-maps/SkateMaps/build/firebase_core/intermediates/library_manifest/debug/AndroidManifest.xml:8:9-12:19
 MERGED from [:firebase_core] /home/pedro/Desktop/skate-maps/SkateMaps/build/firebase_core/intermediates/library_manifest/debug/AndroidManifest.xml:8:9-12:19
 MERGED from [com.google.firebase:firebase-auth:19.2.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/c8b72275e916ed32c52cbb029194f794/firebase-auth-19.2.0/AndroidManifest.xml:33:9-39:19
 MERGED from [com.google.firebase:firebase-auth:19.2.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/c8b72275e916ed32c52cbb029194f794/firebase-auth-19.2.0/AndroidManifest.xml:33:9-39:19
 MERGED from [com.google.firebase:firebase-firestore:21.3.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/9b0c0efcce60e36d2f6edb0571e11729/jetified-firebase-firestore-21.3.0/AndroidManifest.xml:17:9-23:19
 MERGED from [com.google.firebase:firebase-firestore:21.3.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/9b0c0efcce60e36d2f6edb0571e11729/jetified-firebase-firestore-21.3.0/AndroidManifest.xml:17:9-23:19
+MERGED from [com.google.firebase:firebase-database:17.0.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/104413d1f1959dabd31ff9e38403d529/jetified-firebase-database-17.0.0/AndroidManifest.xml:29:9-33:19
+MERGED from [com.google.firebase:firebase-database:17.0.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/104413d1f1959dabd31ff9e38403d529/jetified-firebase-database-17.0.0/AndroidManifest.xml:29:9-33:19
 MERGED from [com.google.firebase:firebase-common:19.3.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/d6d163a9b0215544b0bde58e878f4ced/jetified-firebase-common-19.3.0/AndroidManifest.xml:32:9-36:35
 MERGED from [com.google.firebase:firebase-common:19.3.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/d6d163a9b0215544b0bde58e878f4ced/jetified-firebase-common-19.3.0/AndroidManifest.xml:32:9-36:35
 	android:exported
@@ -315,6 +334,12 @@ ADDED from [:cloud_firestore] /home/pedro/Desktop/skate-maps/SkateMaps/build/clo
 		ADDED from [:cloud_firestore] /home/pedro/Desktop/skate-maps/SkateMaps/build/cloud_firestore/intermediates/library_manifest/debug/AndroidManifest.xml:11:17-82
 	android:name
 		ADDED from [:cloud_firestore] /home/pedro/Desktop/skate-maps/SkateMaps/build/cloud_firestore/intermediates/library_manifest/debug/AndroidManifest.xml:10:17-133
+meta-data#com.google.firebase.components:io.flutter.plugins.firebase.database.FlutterFirebaseAppRegistrar
+ADDED from [:firebase_database] /home/pedro/Desktop/skate-maps/SkateMaps/build/firebase_database/intermediates/library_manifest/debug/AndroidManifest.xml:9:13-11:85
+	android:value
+		ADDED from [:firebase_database] /home/pedro/Desktop/skate-maps/SkateMaps/build/firebase_database/intermediates/library_manifest/debug/AndroidManifest.xml:11:17-82
+	android:name
+		ADDED from [:firebase_database] /home/pedro/Desktop/skate-maps/SkateMaps/build/firebase_database/intermediates/library_manifest/debug/AndroidManifest.xml:10:17-127
 meta-data#com.google.firebase.components:io.flutter.plugins.firebase.core.FlutterFirebaseAppRegistrar
 ADDED from [:firebase_core] /home/pedro/Desktop/skate-maps/SkateMaps/build/firebase_core/intermediates/library_manifest/debug/AndroidManifest.xml:9:13-11:85
 	android:value
@@ -325,6 +350,8 @@ uses-permission#android.permission.ACCESS_NETWORK_STATE
 ADDED from [com.google.android.gms:play-services-maps:17.0.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/355332704fbabf3ed5c20e6555a3126a/play-services-maps-17.0.0/AndroidManifest.xml:23:5-79
 MERGED from [com.google.firebase:firebase-firestore:21.3.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/9b0c0efcce60e36d2f6edb0571e11729/jetified-firebase-firestore-21.3.0/AndroidManifest.xml:13:5-79
 MERGED from [com.google.firebase:firebase-firestore:21.3.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/9b0c0efcce60e36d2f6edb0571e11729/jetified-firebase-firestore-21.3.0/AndroidManifest.xml:13:5-79
+MERGED from [com.google.firebase:firebase-database:17.0.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/104413d1f1959dabd31ff9e38403d529/jetified-firebase-database-17.0.0/AndroidManifest.xml:25:5-79
+MERGED from [com.google.firebase:firebase-database:17.0.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/104413d1f1959dabd31ff9e38403d529/jetified-firebase-database-17.0.0/AndroidManifest.xml:25:5-79
 MERGED from [io.grpc:grpc-android:1.21.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/12e8ffc97416002179dc5dfe67994785/grpc-android-1.21.0/AndroidManifest.xml:11:5-79
 MERGED from [io.grpc:grpc-android:1.21.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/12e8ffc97416002179dc5dfe67994785/grpc-android-1.21.0/AndroidManifest.xml:11:5-79
 	android:name
@@ -369,6 +396,12 @@ ADDED from [com.google.firebase:firebase-firestore:21.3.0] /home/pedro/.gradle/c
 		ADDED from [com.google.firebase:firebase-firestore:21.3.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/9b0c0efcce60e36d2f6edb0571e11729/jetified-firebase-firestore-21.3.0/AndroidManifest.xml:22:17-82
 	android:name
 		ADDED from [com.google.firebase:firebase-firestore:21.3.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/9b0c0efcce60e36d2f6edb0571e11729/jetified-firebase-firestore-21.3.0/AndroidManifest.xml:21:17-111
+meta-data#com.google.firebase.components:com.google.firebase.database.DatabaseRegistrar
+ADDED from [com.google.firebase:firebase-database:17.0.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/104413d1f1959dabd31ff9e38403d529/jetified-firebase-database-17.0.0/AndroidManifest.xml:30:13-32:85
+	android:value
+		ADDED from [com.google.firebase:firebase-database:17.0.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/104413d1f1959dabd31ff9e38403d529/jetified-firebase-database-17.0.0/AndroidManifest.xml:32:17-82
+	android:name
+		ADDED from [com.google.firebase:firebase-database:17.0.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/104413d1f1959dabd31ff9e38403d529/jetified-firebase-database-17.0.0/AndroidManifest.xml:31:17-109
 provider#com.google.firebase.provider.FirebaseInitProvider
 ADDED from [com.google.firebase:firebase-common:19.3.0] /home/pedro/.gradle/caches/transforms-2/files-2.1/d6d163a9b0215544b0bde58e878f4ced/jetified-firebase-common-19.3.0/AndroidManifest.xml:26:9-30:39
 	android:authorities

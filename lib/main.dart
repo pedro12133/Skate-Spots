@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'search_map.dart';
 import 'map_menu.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 
 
 void main() => runApp(SkateMaps());
@@ -16,10 +14,9 @@ class SkateMaps extends StatefulWidget {
 }
 
 class _SkateMaps extends State<SkateMaps>{
-  static String keyword = "Bakery";
+  static String keyword = "All";
 
   void updateKeyWord(String newKeyword) {
-    print(newKeyword);
     setState(() {
       keyword = newKeyword;
     });

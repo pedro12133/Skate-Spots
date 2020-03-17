@@ -22,10 +22,12 @@ class _SearchFilter extends State<SearchFilter> {
 
   static const String _KEY_SELECTED_POSITION = "position";
   static const String _KEY_SELECTED_VALUE = "value";
+  static const String _KEY_SELECTED_RADIUS = "radius";
 
   int _selectedPosition = 0;
   final Function updateKeyword;
-  List<bool> isSelected;
+  List<bool> isSelected = [false,true,false];
+  int radius = 1;
 
   _SearchFilter(this.updateKeyword);
 
@@ -68,37 +70,98 @@ class _SearchFilter extends State<SearchFilter> {
             ), // Font
           ),
         ),
-        body: ListView(
-          children: <Widget>[
-            ListTile(
-              selected: _selectedPosition == 0,
-              leading: Image.asset("assets/images/park.png",),
-              title: Text(filterOptions[0]),
-              onTap: () {
-                _saveKeywordPreference(0);
-              },
-              trailing: _getIcon(0),
+        body: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: <Color>[Colors.white,Colors.blueGrey]
             ),
-            ListTile(
-              selected: _selectedPosition == 1,
-              leading: Image.asset("assets/images/street.png",),
-              title: Text(filterOptions[1]),
-              onTap: () {
-                _saveKeywordPreference(1);
-              },
-              trailing: _getIcon(1),
-            ),
-            ListTile(
-              selected: _selectedPosition == 2,
-              leading: Image.asset("assets/images/xboards.jpg",),
-              title: Text(filterOptions[2]),
-              onTap: () {
-                _saveKeywordPreference(2);
-              },
-              trailing: _getIcon(2),
-            ),
-          ],
-        ),
+          ),
+          child: ListView(
+            children: <Widget>[
+              SizedBox(height: 20),
+              ListTile(
+                selected: _selectedPosition == 0,
+                leading: Image.asset("assets/images/park.png",),
+                title: Text(filterOptions[0]),
+                onTap: () {
+                  _saveKeywordPreference(0);
+                },
+                trailing: _getIcon(0),
+              ),
+              SizedBox(height: 20),
+              ListTile(
+                selected: _selectedPosition == 1,
+                leading: Image.asset("assets/images/street.png",),
+                title: Text(filterOptions[1]),
+                onTap: () {
+                  _saveKeywordPreference(1);
+                },
+                trailing: _getIcon(1),
+              ),
+              SizedBox(height: 20),
+              ListTile(
+                selected: _selectedPosition == 2,
+                leading: Image.asset("assets/images/xboards.jpg",),
+                title: Text(filterOptions[2]),
+                onTap: () {
+                  _saveKeywordPreference(2);
+                },
+                trailing: _getIcon(2),
+              ),
+              SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  ToggleButtons(
+                    borderColor: Colors.blueGrey,
+                    color: Colors.white,
+                    fillColor: Colors.blueGrey,
+                    selectedColor: Colors.white,
+                    selectedBorderColor: Colors.grey,
+                    borderRadius: BorderRadius.circular(30),
+                    children: <Widget>[
+                      Row(
+                        children: <Widget>[
+                          SizedBox(width: 20),
+                          Text(" 5 mi",style: TextStyle(fontSize: 20)),
+                          SizedBox(width: 20),
+                        ],
+                      ),
+                      Row(
+                        children: <Widget>[
+                          SizedBox(width: 20),
+                          Text("10 mi",style: TextStyle(fontSize: 20)),
+                          SizedBox(width: 20),
+                        ],
+                      ),
+                      Row(
+                        children: <Widget>[
+                          SizedBox(width: 20),
+                          Text("25 mi",style: TextStyle(fontSize: 20)),
+                          SizedBox(width: 20),
+                        ],
+                      ),
+                    ],
+                    isSelected: isSelected,
+                    onPressed: (int index) async {
+                      if(isSelected[index])
+                        return;
+                      setState(() {
+                        for(int i = 0; i < isSelected.length; i++)
+                          isSelected[i] = false;
+                        isSelected[index] = true;
+                        radius = index;
+                        _saveKeywordPreference(_selectedPosition);
+                      });
+                    },
+                  ),
+                ],
+              )
+            ],
+          ),
+        )
       ),
     );
   }
@@ -121,6 +184,12 @@ class _SearchFilter extends State<SearchFilter> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
       _selectedPosition = prefs.getInt(_KEY_SELECTED_POSITION) ?? 0;
+      radius = prefs.getInt(_KEY_SELECTED_RADIUS);
+      for(int i = 0; i < isSelected.length; i++)
+        isSelected[i] = false;
+      isSelected[radius] = true;
+
+      print("======LOAD====> $radius");
     });
   }
 
@@ -130,7 +199,8 @@ class _SearchFilter extends State<SearchFilter> {
       _selectedPosition = position;
       prefs.setString(_KEY_SELECTED_VALUE, filterOptions[position]);
       prefs.setInt(_KEY_SELECTED_POSITION, position);
-      updateKeyword(filterOptions[position]);
+      prefs.setInt(_KEY_SELECTED_RADIUS, radius);
+      updateKeyword(filterOptions[position]+" $radius");
     });
   }
 }

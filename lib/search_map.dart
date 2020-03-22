@@ -1,7 +1,9 @@
-import 'dart:async';
+
 import 'dart:convert';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:skate_maps/set_marker_attributes_form.dart';
+import 'package:skate_maps/user.dart';
 import 'data/error.dart';
 import 'data/place_response.dart';
 import 'data/result.dart';
@@ -43,7 +45,6 @@ class _SearchMap extends State<SearchMap> {
   GeoPoint editMarkerPosition;
   LatLng cameraPosition;
 
-
   @override
   void initState(){
     super.initState();
@@ -59,7 +60,16 @@ class _SearchMap extends State<SearchMap> {
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
+
+    final user = Provider.of<User>(context);
+
+    bool _userIsSignedIn() {
+      if(user != null)
+        return true;
+      return false;
+    }
+
+    return Scaffold(
       body: GoogleMap(
         onCameraMove: (position) {
           setState(() {
@@ -115,50 +125,59 @@ class _SearchMap extends State<SearchMap> {
         child: Container(
           padding: EdgeInsets.symmetric(horizontal: 10.0),
           height: 56.0,
-          child: Row(children: <Widget>[
-            IconButton(
-              onPressed: () {
-                if(!editingMarker) {
-                  //showMenu();
-                }
-                else{
-                  _mapController.animateCamera(
-                      CameraUpdate.newCameraPosition(
-                          CameraPosition(
-                            zoom: zoom,
-                            tilt: tilt,
-                            target: LatLng(editMarkerPosition.latitude, editMarkerPosition.longitude),
-                          )
-                      )
-                  );
-                  popupMessage("Attributes for current marker aren\'t set.");
-                }
-              },
-              icon: Icon(Icons.list),
-              color: Colors.white,
-            ),
-            Spacer(),
-            IconButton(
-              onPressed: () {
-                if(!editingMarker)
-                  _addMarker();
-                else{
-                  _mapController.animateCamera(
-                      CameraUpdate.newCameraPosition(
-                          CameraPosition(
-                            zoom: zoom,
-                            tilt: tilt,
-                            target: LatLng(editMarkerPosition.latitude, editMarkerPosition.longitude),
-                          )
-                      )
-                  );
-                  popupMessage("Attributes for current marker aren\'t set.");
-                }
+          child: Row(
+            children: <Widget>[
+              IconButton(
+                onPressed: () {
+                  if(!editingMarker) {
+                    //showMenu();
+                  }
+                  else{
+                    _mapController.animateCamera(
+                        CameraUpdate.newCameraPosition(
+                            CameraPosition(
+                              zoom: zoom,
+                              tilt: tilt,
+                              target: LatLng(editMarkerPosition.latitude, editMarkerPosition.longitude),
+                            )
+                        )
+                    );
+                    popupMessage("Attributes for current marker aren\'t set.");
+                  }
                 },
-              icon: Icon(Icons.add_location),
-              color: Colors.white,
-            )
-          ]),
+                icon: Icon(Icons.list),
+                color: Colors.white,
+              ),
+              Spacer(),
+              IconButton(
+                onPressed: () {
+                  if(_userIsSignedIn()) {
+                    if(!editingMarker)
+                      _addMarker();
+                    else {
+                      _mapController.animateCamera(
+                          CameraUpdate.newCameraPosition(
+                              CameraPosition(
+                                zoom: zoom,
+                                tilt: tilt,
+                                target: LatLng(
+                                    editMarkerPosition.latitude,
+                                    editMarkerPosition.longitude
+                                ),
+                              )
+                          )
+                      );
+                      popupMessage("Attributes for current marker aren\'t set.");
+                    }
+                  }
+                  else
+                    popupMessage("You need to sign in to use this feature.");
+                },
+                icon: Icon(Icons.add_location),
+                color: Colors.white,
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -168,9 +187,6 @@ class _SearchMap extends State<SearchMap> {
 
     LatLong.LatLng userLatLng = new LatLong.LatLng(cameraPosition.latitude, cameraPosition.longitude);
     final LatLong.Distance distance = new LatLong.Distance();
-
-
-    // 1 mi = 1609.34 m
 
     BitmapDescriptor pinLocationIcon;
     BitmapDescriptor.fromAssetImage(ImageConfiguration(devicePixelRatio: 0.5), 'assets/images/marker.png')
@@ -273,7 +289,6 @@ class _SearchMap extends State<SearchMap> {
           if(result[0] == "Add") {
             category = result[1];
             label = result[2];
-            print("=====SAVING COORDS======> "+coordinates.toString());
             _saveSpot(category, label, coordinates.latitude, coordinates.longitude);
             editingMarker = false;
             setState(() {
@@ -297,6 +312,13 @@ class _SearchMap extends State<SearchMap> {
           elevation: 16,
           backgroundColor: Colors.grey,
           child: Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: <Color>[Colors.white,Colors.blueGrey],
+              ),
+            ),
             height: 200.0,
             width: 300.0,
             child: Center(
@@ -366,7 +388,6 @@ class _SearchMap extends State<SearchMap> {
     String radius = "";
     String filter = "";
     double meters = 1609.34;
-    print("======KEY=======> "+widget.keyword);
 
     filter = widget.keyword.split(" ")[0];
     radius = widget.keyword.split(" ")[1];
@@ -377,8 +398,6 @@ class _SearchMap extends State<SearchMap> {
       meters = meters*10;
     if(radius == "2")
       meters = meters*25;
-
-    print("$filter $meters");
 
     if(filter == "Park")
       searchNearbySkateParks(cameraPosition.latitude, cameraPosition.longitude,meters);

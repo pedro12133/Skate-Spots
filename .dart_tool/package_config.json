@@ -188,6 +188,12 @@
       "languageVersion": "2.1"
     },
     {
+      "name": "flutter_spinkit",
+      "rootUri": "file:///home/pedro/Dev/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_spinkit-4.1.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.5"
+    },
+    {
       "name": "flutter_test",
       "rootUri": "file:///home/pedro/Dev/flutter/packages/flutter_test",
       "packageUri": "lib/",
@@ -320,6 +326,12 @@
       "languageVersion": "1.12"
     },
     {
+      "name": "nested",
+      "rootUri": "file:///home/pedro/Dev/flutter/.pub-cache/hosted/pub.dartlang.org/nested-0.0.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.2"
+    },
+    {
       "name": "node_interop",
       "rootUri": "file:///home/pedro/Dev/flutter/.pub-cache/hosted/pub.dartlang.org/node_interop-1.0.3",
       "packageUri": "lib/",
@@ -390,6 +402,12 @@
       "rootUri": "file:///home/pedro/Dev/flutter/.pub-cache/hosted/pub.dartlang.org/plugin_platform_interface-1.0.2",
       "packageUri": "lib/",
       "languageVersion": "2.1"
+    },
+    {
+      "name": "provider",
+      "rootUri": "file:///home/pedro/Dev/flutter/.pub-cache/hosted/pub.dartlang.org/provider-4.0.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.2"
     },
     {
       "name": "pub_semver",
@@ -524,7 +542,7 @@
       "languageVersion": "2.2"
     }
   ],
-  "generated": "2020-03-17T07:46:53.400254Z",
+  "generated": "2020-03-22T05:37:57.962033Z",
   "generator": "pub",
   "generatorVersion": "2.7.0"
 }

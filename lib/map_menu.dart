@@ -78,9 +78,9 @@ class _SearchFilter extends State<SearchFilter> {
                 colors: <Color>[Colors.white,Colors.blueGrey]
             ),
           ),
-          child: ListView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-              SizedBox(height: 20),
               ListTile(
                 selected: _selectedPosition == 0,
                 leading: Image.asset("assets/images/park.png",),
@@ -90,7 +90,6 @@ class _SearchFilter extends State<SearchFilter> {
                 },
                 trailing: _getIcon(0),
               ),
-              SizedBox(height: 20),
               ListTile(
                 selected: _selectedPosition == 1,
                 leading: Image.asset("assets/images/street.png",),
@@ -100,7 +99,6 @@ class _SearchFilter extends State<SearchFilter> {
                 },
                 trailing: _getIcon(1),
               ),
-              SizedBox(height: 20),
               ListTile(
                 selected: _selectedPosition == 2,
                 leading: Image.asset("assets/images/xboards.jpg",),
@@ -111,12 +109,14 @@ class _SearchFilter extends State<SearchFilter> {
                 trailing: _getIcon(2),
               ),
               SizedBox(height: 20),
+              SizedBox(height: 20),
+              SizedBox(height: 20),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
                   ToggleButtons(
                     borderColor: Colors.blueGrey,
-                    color: Colors.white,
+                    color: Colors.grey[700],
                     fillColor: Colors.blueGrey,
                     selectedColor: Colors.white,
                     selectedBorderColor: Colors.grey,
@@ -158,7 +158,10 @@ class _SearchFilter extends State<SearchFilter> {
                     },
                   ),
                 ],
-              )
+              ),
+              SizedBox(height: 20),
+              SizedBox(height: 20),
+              SizedBox(height: 20),
             ],
           ),
         )
@@ -188,8 +191,6 @@ class _SearchFilter extends State<SearchFilter> {
       for(int i = 0; i < isSelected.length; i++)
         isSelected[i] = false;
       isSelected[radius] = true;
-
-      print("======LOAD====> $radius");
     });
   }
 

@@ -630,6 +630,7 @@ public final class R {
   }
   public static final class mipmap {
     public static final int ic_launcher=0x7f080000;
+    public static final int launcher_icon=0x7f080001;
   }
   public static final class string {
     public static final int common_google_play_services_enable_button=0x7f090000;
@@ -1923,5 +1924,8 @@ public final class R {
      * @attr name com.pedrobeltran.skate_maps:scopeUris
      */
     public static final int SignInButton_scopeUris=2;
+  }
+  public static final class xml {
+    public static final int flutter_image_picker_file_paths=0x7f0c0000;
   }
 }

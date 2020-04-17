@@ -1,14 +1,12 @@
 
-import 'dart:convert';
+import 'package:flutter/painting.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:skate_maps/popup_alert.dart';
 import 'package:skate_maps/set_marker_attributes_form.dart';
+import 'package:skate_maps/skate_spot_info_page.dart';
 import 'package:skate_maps/user.dart';
-import 'data/error.dart';
-import 'data/place_response.dart';
-import 'data/result.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -16,8 +14,11 @@ import 'package:latlong/latlong.dart' as LatLong;
 
 
 class SearchMap extends StatefulWidget {
-  final String keyword;
-  SearchMap(this.keyword);
+  Function setMarkerEditSignInStatus;
+  final List<String> keywords;
+  final double radius;
+  final bool isSignedIn;
+  SearchMap(this.keywords,this.radius,this.isSignedIn,this.setMarkerEditSignInStatus);
 
   @override
   State<SearchMap> createState() {
@@ -26,30 +27,29 @@ class SearchMap extends StatefulWidget {
 }
 
 class _SearchMap extends State<SearchMap> {
-  static const String _API_KEY = '';
-  double lat = 34.1314283;
-  double lon = -118.06987;
-  static double tilt = 75;
-  static double zoom = 12;
-  static const String baseUrl =
-      "https://maps.googleapis.com/maps/api/place/nearbysearch/json";
+
   final databaseRef = Firestore.instance;
   List<Marker> markers = [];
-  Error error;
-  List<Result> places;
-  bool searching = true;
-  String keyword;
-  int locationCount = 0;
-  GoogleMapController _mapController;
   bool editingMarker = false;
   GeoPoint editMarkerPosition;
+  GoogleMapController _mapController;
   LatLng cameraPosition;
-
-  @override
-  void initState(){
-    super.initState();
-
-  }
+  static double tilt = 75;
+  static double zoom = 12;
+  Error error;
+  String uid = "";
+  double screenHeight;
+  double screenWidth;
+  List<Padding> infoCards = [];
+  List<SkateSpot> skateSpots = [];
+  Color cardColor = Colors.grey[200];
+  bool listIsOpen = false;
+  Color primary = Colors.blueGrey;
+  bool rateToggled = false;
+  List<Widget> rateButtons = [];
+  int rating = -1;
+  double animationLength = 100;
+  bool animationIsPlaying = false;
 
   static final CameraPosition _myLocation = CameraPosition(
       target: LatLng(34.0551, -117.7500),
@@ -58,67 +58,62 @@ class _SearchMap extends State<SearchMap> {
       tilt: tilt,
   );
 
+
+  @override
+  void initState(){
+    super.initState();
+  }
+
+
   @override
   Widget build(BuildContext context) {
 
-    final user = Provider.of<User>(context);
 
-    bool _userIsSignedIn() {
-      if(user != null)
-        return true;
-      return false;
-    }
+    screenHeight = MediaQuery.of(context).size.height-100;
+    screenWidth = MediaQuery.of(context).size.width;
+
+    var user = Provider.of<User>(this.context);
+    if(user != null)
+      uid = user.uid;
+    else
+      uid = "";
+
 
     return Scaffold(
-      body: GoogleMap(
-        onCameraMove: (position) {
-          setState(() {
-            cameraPosition = position.target;
-          });
-        },
-        myLocationEnabled: true,
-        mapType: MapType.normal,
-        initialCameraPosition: _myLocation,
-        onMapCreated: (GoogleMapController controller) {
-          _onMapCreated(controller);
-          _panToCurrentLocation(controller);
-        },
-        markers: Set.from(markers),
+      body: Stack(
+          children: <Widget>[
+            getMap(),
+            infoCards.length > 0 ? getListContainer() : Row(),
+          ],
       ),
       floatingActionButton: FloatingActionButton(
-        elevation: 10,
-        onPressed: () {
+        elevation: 12,
+        onPressed: () async {
           if(!editingMarker) {
-            search();
-            _mapController.animateCamera(
-                CameraUpdate.newCameraPosition(
-                    CameraPosition(
-                      zoom: 11.5,
-                      tilt: tilt,
-                      target: LatLng(cameraPosition.latitude, cameraPosition.longitude),
-                    )
-                )
-            );
+            _search();
           }
           else {
-            _mapController.animateCamera(
-                CameraUpdate.newCameraPosition(
-                    CameraPosition(
-                      zoom: zoom,
-                      tilt: tilt,
-                      target: LatLng(editMarkerPosition.latitude, editMarkerPosition.longitude),
-                    )
-                )
-            );
-            popupMessage("Attributes for current marker aren\'t set.");
+            _panToCurrentMarkerLocation();
+            showAlert('Attributes for current marker aren\'t set.');
           }
         },
-        backgroundColor: Colors.grey,
-        child: Image.asset("assets/images/skate.png"),
+        child: Container(
+          decoration: BoxDecoration(
+              border: Border.all(width: 1, color: Colors.blueGrey[100]),
+              shape: BoxShape.circle,
+              gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: <Color>[Colors.white70,Colors.blueGrey[900]]
+              )
+          ),
+            child: Image.asset("assets/images/skate.png"),
+        ),
         shape: CircleBorder(),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar:  BottomAppBar(
+        elevation: 10,
         color: Colors.blueGrey,
         shape: CircularNotchedRectangle(),
         notchMargin: 1.5,
@@ -130,19 +125,17 @@ class _SearchMap extends State<SearchMap> {
               IconButton(
                 onPressed: () {
                   if(!editingMarker) {
-                    //showMenu();
+                    if(listIsOpen)
+                      setState(() {
+                        infoCards.clear();
+                        listIsOpen = false;
+                      });
+                    else
+                      setInfoCards();
                   }
                   else{
-                    _mapController.animateCamera(
-                        CameraUpdate.newCameraPosition(
-                            CameraPosition(
-                              zoom: zoom,
-                              tilt: tilt,
-                              target: LatLng(editMarkerPosition.latitude, editMarkerPosition.longitude),
-                            )
-                        )
-                    );
-                    popupMessage("Attributes for current marker aren\'t set.");
+                    _panToCurrentMarkerLocation();
+                    showAlert("Attributes for current marker aren\'t set.");
                   }
                 },
                 icon: Icon(Icons.list),
@@ -151,27 +144,16 @@ class _SearchMap extends State<SearchMap> {
               Spacer(),
               IconButton(
                 onPressed: () {
-                  if(_userIsSignedIn()) {
+                  if(widget.isSignedIn) {
                     if(!editingMarker)
                       _addMarker();
                     else {
-                      _mapController.animateCamera(
-                          CameraUpdate.newCameraPosition(
-                              CameraPosition(
-                                zoom: zoom,
-                                tilt: tilt,
-                                target: LatLng(
-                                    editMarkerPosition.latitude,
-                                    editMarkerPosition.longitude
-                                ),
-                              )
-                          )
-                      );
-                      popupMessage("Attributes for current marker aren\'t set.");
+                      _panToCurrentMarkerLocation();
+                      showAlert("Attributes for current marker aren\'t set.");
                     }
                   }
                   else
-                    popupMessage("You need to sign in to use this feature.");
+                    showAlert("You need to sign in to use this feature.");
                 },
                 icon: Icon(Icons.add_location),
                 color: Colors.white,
@@ -183,187 +165,172 @@ class _SearchMap extends State<SearchMap> {
     );
   }
 
-  void _getSavedSpots(double radius) {
-
-    LatLong.LatLng userLatLng = new LatLong.LatLng(cameraPosition.latitude, cameraPosition.longitude);
-    final LatLong.Distance distance = new LatLong.Distance();
-
-    BitmapDescriptor pinLocationIcon;
-    BitmapDescriptor.fromAssetImage(ImageConfiguration(devicePixelRatio: 0.5), 'assets/images/marker.png')
-      .then((icon) {
+  GoogleMap getMap() {
+    return GoogleMap(
+      onTap: (val) {
+        clearMarkers();
+        editingMarker = false;
+        widget.setMarkerEditSignInStatus(editingMarker);
+      },
+      onCameraMove: (position) {
         setState(() {
-          pinLocationIcon = icon;
+          cameraPosition = position.target;
         });
-    });
-
-    markers.clear();
-
-    var docs = [];
-    var snaps = databaseRef
-        .collection('markers')
-        .getDocuments()
-        .then((snapshot) {
-
-
-
-      for(var x in snapshot.documents) {
-
-        LatLong.LatLng markerLatLng = new LatLong.LatLng(x['lat'], x['lon']);
-        double meters = distance(userLatLng, markerLatLng);
-
-        if(meters <= radius) {
-          print("distance: $meters name: "+x['name']);
-          setState(() {
-            final marker = Marker(
-              icon: pinLocationIcon,
-              markerId: MarkerId(x['name']),
-              position: LatLng(x['lat'], x['lon']),
-              infoWindow: InfoWindow(
-                  title: x['name'],
-                  snippet: x['category']),
-              onTap: () {
-                //not sure
-              },
-            );
-            markers.add(marker);
-            print("len ======> "+markers.length.toString());
-          });
-        }
-        else
-          print("No data!");
-      }
-    });
-  }
-
-  void _saveSpot(String category, String label, double lat, double lon) async {
-    try {
-      await databaseRef.collection('markers')
-          .add({
-        'category' : category,
-        'lat': lat,
-        'lon': lon,
-        'name' : label
-      });
-      Scaffold.of(context).showSnackBar(SnackBar(content: Text("Skate spot added.")));
-    }
-    catch(error) {
-      Scaffold.of(context).showSnackBar(SnackBar(content: Text("Error: "+error.toString())));
-    }
-
-  }
-
-  void _addMarker() async {
-
-    markers.clear();
-
-    var currentLocation = await Geolocator()
-        .getCurrentPosition(desiredAccuracy: LocationAccuracy.best);
-    GeoPoint coordinates = new GeoPoint(
-        currentLocation.latitude,
-        currentLocation.longitude
+      },
+      myLocationEnabled: true,
+      mapType: MapType.normal,
+      initialCameraPosition: _myLocation,
+      onMapCreated: (GoogleMapController controller) {
+        _onMapCreated(controller);
+        _panToCurrentLocation(controller);
+      },
+      markers: Set.from(markers),
     );
-    editMarkerPosition = new GeoPoint(cameraPosition.latitude, cameraPosition.longitude);
-    String label = "";
-    String category = "";
-    editingMarker = true;
-
-    setState(() {
-      final marker = Marker(
-        draggable: true,
-        onDragEnd: (value) {
-          coordinates = new GeoPoint(value.latitude, value.longitude);
-          editMarkerPosition = coordinates;
-        },
-        markerId: MarkerId(locationCount.toString()),
-        position: LatLng(cameraPosition.latitude, cameraPosition.longitude),
-        onTap: () async {
-          final result = await Navigator.push(context, MaterialPageRoute(builder: (context) => AttributesForm()));
-
-          if(result[0] == "Delete") {
-            editingMarker = false;
-            setState(() {
-              markers.clear();
-            });
-          }
-
-          if(result[0] == "Add") {
-            category = result[1];
-            label = result[2];
-            _saveSpot(category, label, coordinates.latitude, coordinates.longitude);
-            editingMarker = false;
-            setState(() {
-              markers.clear();
-            });
-          }
-          },
-      );
-      markers.add(marker);
-
-    });
-
   }
 
-  void popupMessage(String text) {
-    showDialog(
-      context: context,
-      builder: (context) {
-        return new Dialog(
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
-          elevation: 16,
-          backgroundColor: Colors.grey,
-          child: Container(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                colors: <Color>[Colors.white,Colors.blueGrey],
-              ),
-            ),
-            height: 200.0,
-            width: 300.0,
-            child: Center(
-              child: Column(
+  Padding getListContainer() {
+    FontWeight bold = FontWeight.bold;
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical:screenWidth/8,horizontal:screenWidth/16),
+      child: Column(
+        children: <Widget>[
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Column(
                 children: <Widget>[
-
-                  SizedBox(height: 20),
-
-                  Text('Attention!',
-                    style: GoogleFonts.rockSalt(
-                      color: Colors.white,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      shadows:
-                      [Shadow(color: Colors.black,offset: Offset(-2.5, -2.5))],
-                    ), // Font
-                  ),
-
-                  SizedBox(height: 20),
-
-                  Text(text),
-
-                  SizedBox(height: 20),
-
-                  RaisedButton(
-                    color: Colors.blueGrey,
-                    elevation: 5,
-                    child: Text(
-                      "OK",
-                      style: TextStyle(color: Colors.white),
-                    ),
-                    onPressed: () {
-                      //close popup
-                      Navigator.of(context).pop();
-                    },
-                  ),
+                  Text("Bank",style: TextStyle(fontWeight: bold),),
+                  Icon(Icons.location_on, color: Colors.red,),
                 ],
+              ),
+              Column(
+                children: <Widget>[
+                  Text("Gap",style: TextStyle(fontWeight: bold),),
+                  Icon(Icons.location_on, color: Colors.orange,),
+                ],
+              ),
+              Column(
+                children: <Widget>[
+                  Text("Hill",style: TextStyle(fontWeight: bold),),
+                  Icon(Icons.location_on, color: Colors.yellow[600],),
+                ],
+              ),
+              Column(
+                children: <Widget>[
+                  Text("Ledge",style: TextStyle(fontWeight: bold),),
+                  Icon(Icons.location_on, color: Colors.green,),
+                ],
+              ),
+              Column(
+                children: <Widget>[
+                  Text("Rail",style: TextStyle(fontWeight: bold),),
+                  Icon(Icons.location_on, color: Colors.blue[400],),
+                ],
+              ),
+              Column(
+                children: <Widget>[
+                  Text("Stairs",style: TextStyle(fontWeight: bold),),
+                  Icon(Icons.location_on, color: Colors.blue[800],),
+                ],
+              ),
+              Column(
+                children: <Widget>[
+                  Text("Other",style: TextStyle(fontWeight: bold),),
+                  Icon(Icons.location_on, color: Colors.purple,),
+                ],
+              ),
+            ],
+          ),
+          Container(
+            width: MediaQuery.of(context).size.width,
+            height: screenHeight/4.5,
+            child:
+            ListView.builder(
+              scrollDirection: Axis.horizontal,
+              padding: EdgeInsets.symmetric(vertical:5,horizontal: 5),
+              itemCount: infoCards.length,
+              itemBuilder: (context, index) {return infoCards[index];},
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+  
+  void setInfoCards() {
+    setState(() {
+      infoCards.clear();
+      for(SkateSpot skateSpot in skateSpots) {
+        listIsOpen = true;
+        List<Widget> icons = [];
+        for(Icon icon in skateSpot.coloredIcons)
+          icons.add(
+              Padding(
+                padding: EdgeInsets.all(1),
+                child: icon,
+              )
+          );
+        infoCards.add(
+          Padding(
+            padding: const EdgeInsets.all(2),
+            child: GestureDetector(
+              onTap: (){
+                //zoom into marker
+                _mapController.animateCamera(CameraUpdate.newCameraPosition(
+                    CameraPosition(
+                      zoom: 15,
+                      tilt: tilt,
+                      target: LatLng(
+                          markers[skateSpot.index].position.latitude+0.005,
+                          markers[skateSpot.index].position.longitude
+                      ),
+                    )
+                ));
+                _mapController.showMarkerInfoWindow(markers[skateSpot.index].markerId);
+              },
+              onLongPress: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => SkateSpotInfo(skateSpot)
+                    )
+                );
+              },
+              child: Card(
+                elevation: 10,
+                color: Colors.grey[100],
+                child: Padding(
+                  padding: const EdgeInsets.all(3),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Text(
+                        skateSpot.name,
+                        style: GoogleFonts.rockSalt(
+                          fontSize: 18,
+                        ),
+                      ),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: icons,
+                      ),
+                      Text(
+                          skateSpot.distance.toStringAsFixed(2)+" miles"
+                      ),
+                    ],
+                  ),
+                ),
               ),
             ),
           ),
         );
-      },
-    );
+      }
+    });
   }
 
+  // camera methods
   void _onMapCreated(GoogleMapController controller) {
     _mapController = controller;
   }
@@ -383,144 +350,233 @@ class _SearchMap extends State<SearchMap> {
 
     cameraPosition = new LatLng(currentLocation.latitude,currentLocation.longitude);
   }
-
-  void search() {
-    String radius = "";
-    String filter = "";
-    double meters = 1609.34;
-
-    filter = widget.keyword.split(" ")[0];
-    radius = widget.keyword.split(" ")[1];
-
-    if(radius == "0")
-      meters = meters*5;
-    if(radius == "1")
-      meters = meters*10;
-    if(radius == "2")
-      meters = meters*25;
-
-    if(filter == "Park")
-      searchNearbySkateParks(cameraPosition.latitude, cameraPosition.longitude,meters);
-    else if(filter == "Street")
-      _getSavedSpots(meters);
-    else if(filter == "All") {
-      searchNearbySkateParks(cameraPosition.latitude, cameraPosition.longitude,meters);
-      _getSavedSpots(meters);
-    }
-    else
-      print("ERROR SEARCHING.");
+  
+  void _setCameraSearchZoom(double zoom) {
+    _mapController.animateCamera(
+        CameraUpdate.newCameraPosition(
+            CameraPosition(
+              zoom: zoom,
+              tilt: tilt,
+              target: LatLng(cameraPosition.latitude, cameraPosition.longitude),
+            )
+        )
+    );
   }
 
-  // change icon
-  void searchNearbySkateParks(double latitude, double longitude, double radius) async {
+  void _panToCurrentMarkerLocation() {
+    _mapController.animateCamera(
+        CameraUpdate.newCameraPosition(
+            CameraPosition(
+              zoom: zoom,
+              tilt: tilt,
+              target: LatLng(
+                  editMarkerPosition.latitude,
+                  editMarkerPosition.longitude
+              ),
+            )
+        )
+    );
+  }
 
+  // search methods
+  Future _getSavedSpots(List<String> filters, double radius) async {
+
+    LatLong.LatLng userLatLng = new LatLong.LatLng(cameraPosition.latitude, cameraPosition.longitude);
+    final LatLong.Distance distance = new LatLong.Distance();
+
+    BitmapDescriptor pinLocationIcon;
+    BitmapDescriptor.fromAssetImage(ImageConfiguration(devicePixelRatio: 1), 'assets/images/marker.png')
+      .then((icon) {
+        setState(() {
+          pinLocationIcon = icon;
+        });
+    });
+
+    int index = -1;
+    await databaseRef
+        .collection('markers')
+        .getDocuments()
+        .then((snapshot) {
+        for(var x in snapshot.documents) {
+          LatLong.LatLng markerLatLng = new LatLong.LatLng(x['lat'], x['lon']);
+          double meters = distance(userLatLng, markerLatLng);
+
+        bool containsKeyword = false;
+        for(int i = 0; i < filters.length; i++)
+          if(x['category'].toString().contains(filters[i]))
+            containsKeyword = true;
+
+        if(meters <= radius && containsKeyword) {
+          setState(() {
+            index++;
+            skateSpots.add(
+                new SkateSpot(x.documentID,index,x['name'],(meters/1609.34),x['desc'], x['category'],x['lat'],x['lon'])
+            );
+            final marker = Marker(
+              icon: pinLocationIcon,
+              markerId: MarkerId(index.toString()),
+              position: LatLng(x['lat'], x['lon']),
+              infoWindow: InfoWindow(
+                  title: x['name'],
+              ),
+            );
+            markers.add(marker);
+          });
+        }
+      }
+    });
+  }
+
+  void _addMarker() async {
+
+    clearMarkers();
+
+    var currentLocation = await Geolocator()
+        .getCurrentPosition(desiredAccuracy: LocationAccuracy.best);
+    GeoPoint coordinates = new GeoPoint(
+        currentLocation.latitude,
+        currentLocation.longitude
+    );
+    editMarkerPosition = new GeoPoint(cameraPosition.latitude, cameraPosition.longitude);
+    editingMarker = true;
+    widget.setMarkerEditSignInStatus(true);
+
+    BitmapDescriptor pinLocationIcon;
+    await BitmapDescriptor.fromAssetImage(ImageConfiguration(devicePixelRatio: 1), 'assets/images/editMarker.png')
+        .then((icon) {
+      setState(() {
+        pinLocationIcon = icon;
+      });
+    });
+
+    setState(() {
+       Marker marker = Marker(
+        icon: pinLocationIcon,
+        draggable: true,
+        onDragEnd: (value) {
+          coordinates = new GeoPoint(value.latitude, value.longitude);
+          editMarkerPosition = coordinates;
+        },
+        markerId: MarkerId("temp"),
+        position: LatLng(cameraPosition.latitude, cameraPosition.longitude),
+        onTap: () async {
+          await Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => AttributesForm(
+                    from: uid,
+                    lat: editMarkerPosition.latitude,
+                    lon: editMarkerPosition.longitude,
+                  )
+              )
+          );
+          setState(() {
+            editingMarker = false;
+            widget.setMarkerEditSignInStatus(false);
+            markers.clear();
+          });
+
+          },
+      );
+      markers.add(marker);
+    });
+  }
+
+  void _search() async {
+    clearMarkers();
+
+    double radius = widget.radius;
+    List filter = widget.keywords;
+    double meters = 1609.34;
+    double zoom = 0;
+    final double currentZoom = await _mapController.getZoomLevel();
+
+   if(filter.length == 0)
+     showAlert("Please select search filters.");
+   else {
+     meters = meters * radius;
+     if(radius == 5 && currentZoom > 11.5)
+       zoom = 11.5;
+     else if(radius == 10 && currentZoom > 10.5)
+       zoom = 10.5;
+     else if(radius == 25 && currentZoom > 9.5)
+       zoom = 9.5;
+     else
+       zoom = currentZoom;
+     _setCameraSearchZoom(zoom);
+
+     await _getSavedSpots(filter,meters);
+     setInfoCards();
+
+     if(markers.length < 1) {
+       Scaffold.of(context).showSnackBar(new SnackBar(content: Text("No skate spots found here.")));
+     }
+   }
+  }
+
+  void showAlert(String text) {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return PopupAlert(text);
+        }
+    );
+  }
+
+  void clearMarkers() {
     setState(() {
       markers.clear();
+      infoCards.clear();
+      skateSpots.clear();
+      listIsOpen = false;
     });
-    String url =
-        '$baseUrl?key=$_API_KEY&location=$latitude,$longitude&radius=$radius&keyword=skatepark';
-    final response = await http.get(url);
-
-    if (response.statusCode == 200) {
-      final data = json.decode(response.body);
-      _handleResponse(data);
-    } else {
-      throw Exception('An error occurred getting places nearby');
-    }
-
-    // make sure to hide searching
-    setState(() {
-      searching = false;
-    });
-  }
-
-  void _handleResponse(data){
-    // bad api key or otherwise
-    if (data['status'] == "REQUEST_DENIED") {
-      setState(() {
-        error = Error.fromJson(data);
-      });
-      // success
-    }
-    else if (data['status'] == "OK") {
-      setState(() {
-        places = PlaceResponse.parseResults(data['results']);
-        for (int i = 0; i < places.length; i++) {
-          markers.add(
-            Marker(
-              markerId: MarkerId(places[i].placeId),
-              position: LatLng(places[i].geometry.location.lat,
-                  places[i].geometry.location.long),
-              infoWindow: InfoWindow(
-                  title: places[i].name, snippet: places[i].vicinity),
-              onTap: () {},
-            ),
-          );
-        }
-      });
-    } else {
-      print(data);
-    }
-  }
-
-  void showMenu() {
-    showModalBottomSheet(
-      elevation: 100,
-        context: context,
-        builder: (BuildContext context) {
-          return new Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(16.0),
-                topRight: Radius.circular(16.0),
-              ),
-              color: Color(0xff232f34),
-            ),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: <Widget>[
-                Container(
-                  height: 50,
-                ),
-                SizedBox(
-                    height: (56 * 6).toDouble(),
-                    child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(16.0),
-                            topRight: Radius.circular(16.0),
-                          ),
-                          color: Color(0xff344955),
-                        ),
-                        child: Stack(
-                          alignment: Alignment(0, 0),
-                          overflow: Overflow.visible,
-                          children: <Widget>[
-                            Positioned(
-                              child: ListView(
-                                physics: NeverScrollableScrollPhysics(),
-                                children: <Widget>[
-                                  ListTile(
-                                    title: Text(
-                                      "Inbox",
-                                      style: TextStyle(color: Colors.white),
-                                    ),
-                                    leading: Icon(
-                                      Icons.inbox,
-                                      color: Colors.white,
-                                    ),
-                                    onTap: () {},
-                                  ),
-                                ],
-                              ),
-                            )
-                          ],
-                        ))),
-              ],
-            ),
-          );
-        });
   }
 
 }
+
+class SkateSpot {
+  String id = "";
+  int index;
+  String name = "";
+  double distance;
+  String description = "";
+  String categories = "";
+  List<Icon> coloredIcons = [];
+  List<String> imageURLs;
+  double lat = 0;
+  double lon = 0;
+
+  Map<String,Color> iconColorMap = {
+    "Bank":Colors.red,
+    "Gap":Colors.orange,
+    "Hill":Colors.yellow[600],
+    "Ledge":Colors.green,
+    "Rail":Colors.blue[400],
+    "Stairs":Colors.blue[800],
+    "Other":Colors.purple
+  };
+
+  SkateSpot(id,index,name,distance,description,categories,lat,lon) {
+    this.id = id;
+    this.index = index;
+    this.distance = distance;
+    this.name = name;
+    this.description = description;
+    this.categories = categories;
+    this.lat = lat;
+    this.lon = lon;
+
+    List cats = categories.toString().split(' ');
+    for(int i = 0; i < cats.length-1; i++)
+      coloredIcons.add(Icon(Icons.location_on,color: iconColorMap[cats[i]]));
+    getImageURLs();
+  }
+
+  Future<void> getImageURLs() async {
+    await Firestore.instance.collection('markers').document(id).get().then((snap){
+      imageURLs = List.from(snap.data['imgLinks']);
+    });
+  }
+
+}
+
